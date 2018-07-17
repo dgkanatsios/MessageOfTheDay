@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "variables": {
         "storageName": "[concat(uniqueString(parameters('functionName')), 'storage')]",
-        "messagesStorageName": "[concat(uniqueString(parameters('functionName')), 'messageoftheday')]",
+        "messagesStorageName": "[concat(uniqueString(parameters('functionName')), 'messages')]",
         "hostingPlanName": "[concat(toLower(parameters('functionName')), 'hostingplan')]"
     },
     "parameters": {
