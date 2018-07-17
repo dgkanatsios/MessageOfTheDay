@@ -14,7 +14,7 @@ module.exports = function (context, req) {
     }));
 
     promises.push(storagehelpers.insertIntoTable({
-        title: "title1",
+        title: "title2",
         message: "message2"
     }));
 

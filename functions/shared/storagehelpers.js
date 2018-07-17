@@ -39,7 +39,7 @@ function insertIntoTable(body) {
     });
 }
 
-function getMessages(body) {
+function getMessages() {
     return new Promise(function (resolve, reject) {
         const tableSvc = azurestorage.createTableService();
         tableSvc.createTableIfNotExists(tableName,
@@ -80,5 +80,6 @@ function getMessages(body) {
 
 
 module.exports = {
-    insertIntoTable
+    insertIntoTable,
+    getMessages
 };
