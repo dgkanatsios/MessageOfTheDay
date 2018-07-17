@@ -25,7 +25,7 @@ function insertIntoTable(body) {
                         messageData.From = new Date(body.from);
                         messageData.To = new Date(body.to);
                     }
-                    else{
+                    else {
                         messageData.AlwaysShow = true;
                     }
 
@@ -52,21 +52,35 @@ function getMessages() {
                 } else {
                     const now = new Date();
                     const query = new azurestorage.TableQuery()
-                        .where('From lt ? and To gt ?', now,now)
+                        .where('From lt ? and To gt ?', now, now)
                         .or('AlwaysShow eq ?', true);
                     tableSvc.queryEntities(tableName, query, null, function (error, result, response) {
                         if (error) {
                             reject(error);
                         } else {
                             resolve(result.entries.map(entry => {
-                                return {
+                                const data = {
                                     Message: entry.Message._,
                                     Title: entry.Title._,
-                                    Priority: entry.Priority._,
-                                    From: entry.From._ || 'noStartDate',
-                                    To: entry.To._ || 'noEndDate',
-                                    AlwaysShow: entry.AlwaysShow._ || false
+                                    Priority: entry.Priority._
                                 };
+
+                                if (entry.From && entry.To) {
+                                    data.From = entry.From._;
+                                    data.To = entry.To._;
+                                }
+                                else {
+                                    data.From = data.To = 'N/A';
+                                }
+
+                                if (entry.AlwaysShow) {
+                                    data.AlwaysShow = entry.AlwaysShow._;
+                                }
+                                else {
+                                    data.AlwaysShow = false;
+                                }
+
+                                return data;
                             }).sort((a, b) => {
                                 if (a.Priority > b.Priority) {
                                     return 1;
