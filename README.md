@@ -26,6 +26,8 @@ The message of the day API is served by [Azure Functions](https://functions.azur
 
 The *getmessages* Function has a 10-minute cache enabled by default, to modify it change the code in `functions/getmessages/index.js` file. Take into consideration that the cache will be reloaded each time the Function scales (possibly due to many requests) or taken down by the runtime due to inactivity.
 
+A Unity game engine SDK and sample scene (compatible with Unity 5.6) is provided in the `client-unity` folder.
+
 ## Adding/editing/deleting messages
 
 In order to add new messages, you can use the *add* Function, as desribed previously. Moreover, to add/edit/delete messages you can see the free and cross-platform utility [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/). Pay attention to the Date format for the 'From' and 'To' columns, this is a sample entry for July 17th, 2018, at 00:00 UTC:
