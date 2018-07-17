@@ -12,7 +12,7 @@ The message of the day API is served by [Azure Functions](https://functions.azur
 - *sampleadd*: you can call this Function to add 3 sample messages for your game
 - *getmessages*: this Function will return the list of messages in JSON format
 ```json
-[{"Message":"message2","Title":"title2","Priority":1,"AlwaysShow":true},{"Message":"message3","Title":"title3","Priority":2,"AlwaysShow":true},{"Message":"message1","Title":"title1","Priority":100,"From":"2018-07-17T00:00:00Z","To":"2018-07-19T00:00:00Z","AlwaysShow":false}]
+[{"message":"message2","title":"title2","priority":1,"alwaysShow":true},{"message":"message3","title":"title3","priority":2,"alwaysShow":true},{"message":"message1","title":"title1","priority":100,"from":"2018-07-17T00:00:00Z","to":"2018-07-19T00:00:00Z","alwaysShow":false}]
 ```
 - *add*: this Function allows you to add a custom message in JSON format. `title` and `message` properties are required, you can also set `from` and `to` if you want your message to appear in a specific day (this is the message of the day after all). You can optionally set a `priority` (lower comes first)
 
