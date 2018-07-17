@@ -16,6 +16,8 @@ The message of the day API is served by [Azure Functions](https://functions.azur
 ```
 - *add*: this Function allows you to add a custom message in JSON format. `title` and `message` properties are required, you can also set `from` and `to` if you want your message to appear in a specific day (this is the message of the day after all). You can optionally set a `priority` (lower comes first)
 
+The *getmessages* Function has a 10-minute cache enabled by default, to modify it change the code in `functions/getmessages/index.js` file.
+
 ## One-click deployment
 
 Click the following button to deploy the project to your Azure subscription:
