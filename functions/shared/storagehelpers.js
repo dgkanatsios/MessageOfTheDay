@@ -49,8 +49,8 @@ function getMessages() {
                 } else {
                     const now = new Date();
                     const query = new azurestorage.TableQuery()
-                        .where('From gt ?', now)
-                        .and('To lt ?', now);
+                        .where('From lt ?', now)
+                        .and('To gt ?', now);
                     tableSvc.queryEntities(tableName, query, null, function (error, result, response) {
                         if (error) {
                             reject(error);
