@@ -121,11 +121,11 @@
                         },
                         {
                             "name":"AZURE_STORAGE_ACCOUNT",
-                            "value": "[parameters('aciDetailsStorageName')]"
+                            "value": "[parameters('messagesStorageName')]"
                         },
                         {
                             "name": "AZURE_STORAGE_ACCESS_KEY",
-                            "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('aciDetailsStorageName')), '2015-05-01-preview').key1]"
+                            "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('messagesStorageName')), '2015-05-01-preview').key1]"
                         }
 					]
 				}
