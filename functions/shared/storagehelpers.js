@@ -60,22 +60,22 @@ function getMessages() {
                         } else {
                             resolve(result.entries.map(entry => {
                                 const data = {
-                                    Message: entry.Message._,
-                                    Title: entry.Title._,
-                                    Priority: entry.Priority._
+                                    message: entry.Message._,
+                                    title: entry.Title._,
+                                    priority: entry.Priority._
                                 };
 
                                 if (entry.From && entry.To) {
-                                    data.From = entry.From._;
-                                    data.To = entry.To._;
+                                    data.from = entry.From._;
+                                    data.to = entry.To._;
                                 }
                                 //if entry.From is missing, then we are not sending back values for From and To
 
                                 if (entry.AlwaysShow) {
-                                    data.AlwaysShow = entry.AlwaysShow._;
+                                    data.alwaysShow = entry.AlwaysShow._;
                                 }
                                 else {
-                                    data.AlwaysShow = false;
+                                    data.alwaysShow = false;
                                 }
 
                                 return data;

@@ -5,9 +5,16 @@
 
 A simple Message Of The Day implementation for gaming clients, using [Azure Functions](https://functions.azure.com)
 
-## Architecture
+## Architecture - Technical Details
 
-The message of the day API is served by [Azure Functions](https://functions.azure.com) whereas the storage is implemented using [Azure Table Storage](https://azure.microsoft.com/en-us/services/storage/tables/), thus making this solution pretty inexpensive.
+The message of the day API is served by [Azure Functions](https://functions.azure.com) whereas the storage is implemented using [Azure Table Storage](https://azure.microsoft.com/en-us/services/storage/tables/), thus making this solution pretty inexpensive. Function App contains 3 Functions:
+
+- *sampleadd*: you can call this Function to add 3 sample messages for your game
+- *getmessages*: this Function will return the list of messages in JSON format
+```json
+[{"Message":"message2","Title":"title2","Priority":1,"AlwaysShow":true},{"Message":"message3","Title":"title3","Priority":2,"AlwaysShow":true},{"Message":"message1","Title":"title1","Priority":100,"From":"2018-07-17T00:00:00Z","To":"2018-07-19T00:00:00Z","AlwaysShow":false}]
+```
+- *add*: this Function allows you to add a custom message in JSON format. `title` and `message` properties are required, you can also set `from` and `to` if you want your message to appear in a specific day (this is the message of the day after all). You can optionally set a `priority` (lower comes first)
 
 ## One-click deployment
 
