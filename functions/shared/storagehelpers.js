@@ -62,7 +62,10 @@ function getMessages() {
                                 return {
                                     Message: entry.Message._,
                                     Title: entry.Title._,
-                                    Priority: entry.Priority._
+                                    Priority: entry.Priority._,
+                                    From: entry.From._ || 'noStartDate',
+                                    To: entry.To._ || 'noEndDate',
+                                    AlwaysShow: entry.AlwaysShow._ || false
                                 };
                             }).sort((a, b) => {
                                 if (a.Priority > b.Priority) {
