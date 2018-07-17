@@ -5,6 +5,14 @@
 
 A simple Message Of The Day implementation for gaming clients, using [Azure Functions](https://functions.azure.com)
 
+## One-click deployment
+
+Click the following button to deploy the project to your Azure subscription:
+
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdgkanatsios%2FMessageOfTheDay%2Fmaster%2Fdeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+
+This operation will trigger a template deployment of the [deploy.json](deploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources as well as pull the source code from this repository. 
+
 ## Architecture - Technical Details
 
 The message of the day API is served by [Azure Functions](https://functions.azure.com) whereas the storage is implemented using [Azure Table Storage](https://azure.microsoft.com/en-us/services/storage/tables/), thus making this solution pretty inexpensive. Function App contains 3 Functions:
@@ -16,17 +24,19 @@ The message of the day API is served by [Azure Functions](https://functions.azur
 ```
 - *add*: this Function allows you to add a custom message in JSON format. `title` and `message` properties are required, you can also set `from` and `to` if you want your message to appear in a specific day (this is the message of the day after all). You can optionally set a `priority` (lower comes first)
 
-The *getmessages* Function has a 10-minute cache enabled by default, to modify it change the code in `functions/getmessages/index.js` file.
+The *getmessages* Function has a 10-minute cache enabled by default, to modify it change the code in `functions/getmessages/index.js` file. Take into consideration that the cache will be reloaded each time the Function scales (possibly due to many requests) or taken down by the runtime due to inactivity.
 
-## One-click deployment
+## Adding/editing/deleting messages
 
-Click the following button to deploy the project to your Azure subscription:
+In order to add new messages, you can use the *add* Function, as desribed previously. Moreover, to add/edit/delete messages you can see the free and cross-platform utility [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/). Pay attention to the Date format for the 'From' and 'To' columns, this is a sample entry for July 17th, 2018, at 00:00 UTC:
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdgkanatsios%2FMessageOfTheDay%2Fmaster%2Fdeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+```
+2018-07-17T00:00:00.000Z
+```
 
-This operation will trigger a template deployment of the [deploy.json](deploy.json) ARM template file to your Azure subscription, which will create the necessary Azure resources as well as pull the source code from this repository. 
+As you can see, the format for UTC date-time objects is:
 
-To add/edit/delete messages you can see the free and cross-platform utility [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/).
+`YEAR`-`MONTH`-`DAY_OF_MONTH`T`HOUR`:`MINUTE`:`SECONDS`.`MILISECONDS`Z
 
 ## Resources
 
