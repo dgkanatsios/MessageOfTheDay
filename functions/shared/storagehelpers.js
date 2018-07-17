@@ -69,9 +69,7 @@ function getMessages() {
                                     data.From = entry.From._;
                                     data.To = entry.To._;
                                 }
-                                else {
-                                    data.From = data.To = 'N/A';
-                                }
+                                //if entry.From is missing, then we are not sending back values for From and To
 
                                 if (entry.AlwaysShow) {
                                     data.AlwaysShow = entry.AlwaysShow._;
