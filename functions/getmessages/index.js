@@ -2,7 +2,7 @@ const storagehelpers = require('../shared/storagehelpers');
 const utilities = require('../shared/utilities');
 
 const useInMemoryCache = true;
-const cacheDurationInMinutes = 1;
+const cacheDurationInMinutes = 10;
 
 let cache;
 let lastUpdated;
