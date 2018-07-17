@@ -17,7 +17,15 @@ module.exports = function (context, req) {
     //this message will always be visible
     promises.push(storagehelpers.insertIntoTable({
         title: "title2",
-        message: "message2"
+        message: "message2",
+        priority: 1
+    }));
+
+     //this message will always be visible, has a lower priority than the previous one
+     promises.push(storagehelpers.insertIntoTable({
+        title: "title3",
+        message: "message3",
+        priority: 2
     }));
 
 

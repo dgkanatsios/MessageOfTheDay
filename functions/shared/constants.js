@@ -1,3 +1,4 @@
 module.exports = {
-    tableName: 'messages'
+    tableName: 'messages',
+    partitionKey: 'messages'
 }

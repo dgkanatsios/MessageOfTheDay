@@ -14,7 +14,7 @@ function insertIntoTable(body) {
                     const id = uuidv4();
 
                     const messageData = {
-                        PartitionKey: id,
+                        PartitionKey: constants.partitionKey,
                         RowKey: id,
                         Message: body.message,
                         Title: body.title,
@@ -24,6 +24,9 @@ function insertIntoTable(body) {
                     if (body.from && body.to) {
                         messageData.From = new Date(body.from);
                         messageData.To = new Date(body.to);
+                    }
+                    else{
+                        messageData.AlwaysShow = true;
                     }
 
 
@@ -49,8 +52,8 @@ function getMessages() {
                 } else {
                     const now = new Date();
                     const query = new azurestorage.TableQuery()
-                        .where('From lt ?', now)
-                        .and('To gt ?', now);
+                        .where('From lt ? and To gt ?', now,now)
+                        .or('AlwaysShow eq ?', true);
                     tableSvc.queryEntities(tableName, query, null, function (error, result, response) {
                         if (error) {
                             reject(error);
