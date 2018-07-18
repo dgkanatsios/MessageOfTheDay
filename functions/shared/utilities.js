@@ -8,11 +8,11 @@ module.exports = {
             return false;
     },
     setErrorAndCloseContext(context, errorMessage, statusCode) {
-        context.log(`ERROR: ${errorMessage}`);
+        context.log.error(`ERROR: ${errorMessage}`);
         context.res = {
             status: statusCode,
             body: errorMessage,
         };
-        context.done();
+        context.done(errorMessage);
     }
 }
