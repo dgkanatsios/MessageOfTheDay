@@ -2,8 +2,8 @@ const storagehelpers = require('../shared/storagehelpers');
 const utilities = require('../shared/utilities');
 
 module.exports = function (context, req) {
-    if (utilities.validateMessageData(context.body)) {
-        storagehelpers.insertIntoTable(context.body).catch(error => {
+    if (utilities.validateMessageData(req.body)) {
+        storagehelpers.insertIntoTable(req.body).catch(error => {
             utilities.setErrorAndCloseContext(context, error, 500);
         }).then((res) => {
             context.res = {
