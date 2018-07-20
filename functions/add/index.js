@@ -12,7 +12,13 @@ module.exports = function (context, req) {
             context.done();
         });
     } else {
-        utilities.setErrorAndCloseContext(context, "Need POST Data with 'title' and 'message'", 400);
+        utilities.setErrorAndCloseContext(context, `Need POST Data with 'title' and 'message', like: ${samplePost}`, 400);
     }
 
+};
+
+const samplePost = {
+    title: "title",
+    message: "message",
+    priority: 1
 };
