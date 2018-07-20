@@ -3,7 +3,7 @@
 [![unofficial Google Analytics for GitHub](https://gaforgithub.azurewebsites.net/api?repo=MessageOfTheDay)](https://github.com/dgkanatsios/gaforgithub)
 # Message Of The Day
 
-A simple "Message Of The Day" implementation for gaming clients, using [Azure Functions](https://functions.azure.com) and [Azure Table Storage](https://azure.microsoft.com/en-us/services/storage/tables/) for the backend.
+A simple "Message Of The Day" implementation for gaming clients, using [Azure Functions](https://functions.azure.com) and [Azure Table Storage](https://azure.microsoft.com/en-us/services/storage/tables/) for the backend. Functions implemented in Node.js.
 
 ## One-click deployment
 
