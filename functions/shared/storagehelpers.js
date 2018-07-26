@@ -26,7 +26,7 @@ function insertIntoTable(body) {
                         messageData.To = new Date(body.to);
                     }
                     else {
-                        messageData.AlwaysShow = true;
+                        messageData.IsActive = true;
                     }
 
 
@@ -53,7 +53,7 @@ function getMessages() {
                     const now = new Date();
                     const query = new azurestorage.TableQuery()
                         .where('From lt ? and To gt ?', now, now)
-                        .or('AlwaysShow eq ?', true);
+                        .or('IsActive eq ?', true);
                     tableSvc.queryEntities(tableName, query, null, function (error, result, response) {
                         if (error) {
                             reject(error);
@@ -65,17 +65,17 @@ function getMessages() {
                                     priority: entry.Priority._
                                 };
 
+                                //if entry.From is missing, then we are not sending back values for From and To
                                 if (entry.From && entry.To) {
                                     data.from = entry.From._;
                                     data.to = entry.To._;
                                 }
-                                //if entry.From is missing, then we are not sending back values for From and To
-
-                                if (entry.AlwaysShow) {
-                                    data.alwaysShow = entry.AlwaysShow._;
+                               
+                                if (entry.IsActive) {
+                                    data.isActive = entry.isActive._;
                                 }
                                 else {
-                                    data.alwaysShow = false;
+                                    data.isActive = false;
                                 }
 
                                 return data;

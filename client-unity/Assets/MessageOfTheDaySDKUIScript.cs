@@ -35,7 +35,7 @@ public class MessageOfTheDaySDKUIScript : MonoBehaviour
                     foreach (var item in response.Result)
                     {
                         WriteLine(string.Format("title is {0},message is {1}, from is {2}, to is {3}, showAlways is {4}, priority is {5}",
-                            item.title, item.message, item.from, item.to, item.alwaysShow, item.priority));
+                            item.title, item.message, item.from, item.to, item.isActive, item.priority));
                     }
                 WriteLine(result);
             }

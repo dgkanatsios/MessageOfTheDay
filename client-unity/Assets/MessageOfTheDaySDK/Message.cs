@@ -11,7 +11,7 @@ namespace MessageOfTheDaySDK
     {
         public string title;
         public string message;
-        public bool alwaysShow;
+        public bool isActive;
         public string from;
         public string to;
         public int priority;
