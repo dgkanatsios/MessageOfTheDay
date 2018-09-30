@@ -72,7 +72,7 @@ function getMessages() {
                                 }
                                
                                 if (entry.IsActive) {
-                                    data.isActive = entry.isActive._;
+                                    data.isActive = entry.IsActive._;
                                 }
                                 else {
                                     data.isActive = false;
@@ -101,3 +101,5 @@ module.exports = {
     insertIntoTable,
     getMessages
 };
+
+getMessages();
